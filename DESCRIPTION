@@ -5,7 +5,7 @@ Version: 0.1.0
 Author: Pavel Mrykin
 Maintainer: The package maintainer <mrykin@mediaguru.ru>
 Description: With this package you will get info for status of shops, feeds, products informaition (compiteters prices for example).
-    If you have wishes about this package - mail to me.
+    If you have wishes about this package - mail me.
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
