@@ -1,6 +1,6 @@
-getCampaigns <- function(yamtoken, yamclient_id){
+getCampaigns <- function(token, client_id){
   query <- "https://api.partner.market.yandex.ru/v2/campaigns.json"
-  answer <- httr::GET(url=query, httr::add_headers(Authorization=paste("OAuth oauth_token=",yamtoken,",oauth_client_id=",yamclient_id)))
+  answer <- httr::GET(url=query, httr::add_headers(Authorization=paste("OAuth oauth_token=",token,",oauth_client_id=",client_id)))
   httr::stop_for_status(answer)
   dataRaw <- httr::content(answer, "parsed", "application/json", encoding = "UTF-8")
   if (length(dataRaw$error) > 0) {
