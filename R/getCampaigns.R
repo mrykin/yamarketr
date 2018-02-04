@@ -1,4 +1,9 @@
-getCampaigns <- function(token, client_id){
+getCampaigns <- function(token = NULL, client_id = NULL){
+  if (is.null(token)) {
+    stop("Введите свой API-токен")
+  } else (is.null(client_id)){
+    stop("Введите client_id вашего приложения")
+  }
   query <- "https://api.partner.market.yandex.ru/v2/campaigns.json"
   answer <- httr::GET(url=query, httr::add_headers(Authorization=paste("OAuth oauth_token=",token,",oauth_client_id=",client_id)))
   httr::stop_for_status(answer)
@@ -7,12 +12,12 @@ getCampaigns <- function(token, client_id){
     stop(paste(dataRaw$error$code, "-", dataRaw$errors$code, "-",
                 dataRaw$errors$message))
   }
-  result <- data.frame(id = integer(), domain = character(), state = integer(),
+  result <- data.frame(shopId = integer(), domain = character(), state = integer(),
                        prepayEnabled = logical(), stateCpa = factor()
   )
   for(i in 1:dataRaw$pager$total){
   result <- rbind(result, data.frame(
-                      id = dataRaw$campaigns[[i]]$id,
+                      shopId = dataRaw$campaigns[[i]]$id,
                       domain = dataRaw$campaigns[[i]]$domain,
                       state = dataRaw$campaigns[[i]]$state,
                       prepayEnabled = dataRaw$campaigns[[i]]$prepayEnabled,
