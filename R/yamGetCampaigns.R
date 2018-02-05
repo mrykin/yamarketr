@@ -1,4 +1,4 @@
-yamGetCampaigns <- function(token = NULL, client_id = NULL){
+yamGetCampaigns <- function(token = NULL, client_id = "f671ea518c1f41968e50e641c3c0a64a"){
   if (is.null(token)) {
     stop("Введите свой API-токен")
   } else (is.null(client_id)){
