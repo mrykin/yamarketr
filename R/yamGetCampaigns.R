@@ -1,4 +1,4 @@
-getCampaigns <- function(token = NULL, client_id = NULL){
+yamGetCampaigns <- function(token = NULL, client_id = NULL){
   if (is.null(token)) {
     stop("Введите свой API-токен")
   } else (is.null(client_id)){
@@ -10,19 +10,19 @@ getCampaigns <- function(token = NULL, client_id = NULL){
   dataRaw <- httr::content(answer, "parsed", "application/json", encoding = "UTF-8")
   if (length(dataRaw$error) > 0) {
     stop(paste(dataRaw$error$code, "-", dataRaw$errors$code, "-",
-                dataRaw$errors$message))
+               dataRaw$errors$message))
   }
   result <- data.frame(shopId = integer(), domain = character(), state = integer(),
                        prepayEnabled = logical(), stateCpa = factor()
   )
   for(i in 1:dataRaw$pager$total){
-  result <- rbind(result, data.frame(
-                      shopId = dataRaw$campaigns[[i]]$id,
-                      domain = dataRaw$campaigns[[i]]$domain,
-                      state = dataRaw$campaigns[[i]]$state,
-                      prepayEnabled = dataRaw$campaigns[[i]]$prepayEnabled,
-                      stateCpa = dataRaw$campaigns[[i]]$stateCpa, stringsAsFactors = FALSE)
-                  )
+    result <- rbind(result, data.frame(
+      shopId = dataRaw$campaigns[[i]]$id,
+      domain = dataRaw$campaigns[[i]]$domain,
+      state = dataRaw$campaigns[[i]]$state,
+      prepayEnabled = dataRaw$campaigns[[i]]$prepayEnabled,
+      stateCpa = dataRaw$campaigns[[i]]$stateCpa, stringsAsFactors = FALSE)
+    )
   }
   result$domain <- as.character(result$domain)
   result$state <- as.factor(result$state)
