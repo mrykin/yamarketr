@@ -1,5 +1,5 @@
 #Получаем баланс
-getBalance <- function(shops = NULL, yamtoken = NULL, yamclient_id = NULL){
+getBalance <- function(shops = NULL, token = NULL, client_id = NULL){
   if (is.null(shops)) {
     stop("Укажите список магазинов")
   } else if (is.null(yamtoken)) {
@@ -12,7 +12,7 @@ getBalance <- function(shops = NULL, yamtoken = NULL, yamclient_id = NULL){
                        stringsAsFactors = FALSE)
   for(i in 1:nrow(shops)){
     query <- paste0("https://api.partner.market.yandex.ru/v2/campaigns/", shops$id[i], "/balance.json")
-    raw <- httr::GET(url=query, httr::add_headers(Authorization=paste("OAuth oauth_token=",yamtoken,",oauth_client_id=",yamclient_id)))
+    raw <- httr::GET(url=query, httr::add_headers(Authorization=paste("OAuth oauth_token=",token,",oauth_client_id=",client_id)))
     data <- httr::content(raw, "parsed", "application/json")
     result <- rbind(result, data.frame(id = as.character(shops$id[i]),
                                        balance = data$balance$balance,
