@@ -1,6 +1,6 @@
 ---
 title: yamarketr | Пакет для API Яндекс.Маркет
-layout: post
+layout: template
 author: mrykin
 permalink: /yamarketr-readme/
 source-id: 1KS-BPYIvFA5Bcswixp9ZiMDxehFeGq8beyhIOZmEfCo
