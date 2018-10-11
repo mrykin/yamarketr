@@ -14,7 +14,7 @@ getCampaigns <- function(token = NULL, client_id = NULL){
     for(i in 1:data$pager$total){
       result <- rbind(result, data.frame(id = data$campaigns$id[i],
                                          domain = data$campaigns$domain[i],
-                                         state = data$campaigns$state[i],
+                                         state = as.factor(data$campaigns$state[i]),
                                          stateReasons = paste(unlist(data$campaigns$stateReasons[i]), collapse=", "),
                                          stringsAsFactors = FALSE)
       )
