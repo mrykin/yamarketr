@@ -1,16 +1,39 @@
-getCosts <- function(shops, fromDate, toDate, yamtoken, yamclient_id){
-  costs.data <- list()
-  for(i in 1:nrow(shops)){
-    get.costs.query <- paste0("https://api.partner.market.yandex.ru/v2/campaigns/", shops$id[i], "/stats/main.json?fromDate=", fromDate, "&fields=shows&toDate=",toDate)
-    get.costs.data <- httr::GET(url=get.costs.query, httr::add_headers(Authorization=paste("OAuth oauth_token=",yamtoken,",oauth_client_id=",yamclient_id)))
-    costs <- jsonlite::fromJSON(content(get.costs.data,type="text", encoding = "UTF-8"))
-    costs.data[[i]] <- data.frame(id = shops$id[i], domain = shops$domain[i], clicks = sum(costs$mainStats$clicks), spending = sum(costs$mainStats$spending), shows = sum(as.numeric(costs$mainStats$shows)))
-    if(is.null(costs.data[[i]])) next
-    if(exists("result") == FALSE){
-      result <- costs.data[[i]]
-    } else {
-      result <- rbind(result,costs.data[[i]])
+#Получаем расход
+getCosts <- function(shops,
+                     fromDate = format(Sys.Date()-8, "%d-%m-%Y"),
+                     toDate = format(Sys.Date()-1, "%d-%m-%Y"),
+                     token = NULL, client_id = NULL, places = 1, fetchBy = "daily"){
+  result <- data.frame(date = character(0),
+                       id = character(0),
+                       placeGroup = numeric(0),
+                       clicks = numeric(0),
+                       spending = numeric(0),
+                       shows = numeric(0)
+  )
+  for(i in 1:ifelse(is.vector(shops), length(shops), nrow(shops))){
+    shopid <- ifelse(is.vector(shops), shops[i], shops$id[i])
+    query <- paste0("https://api.partner.market.yandex.ru/v2/campaigns/",
+                    shopid,
+                    "/stats/main",
+                    paste0("-",fetchBy),
+                    ".json?fromDate=", fromDate,
+                    "&toDate=",toDate,
+                    "&fields=shows",
+                    ifelse(places == 1, ",model&byPlaces=1", ""))
+    raw <- httr::GET(url=query, httr::add_headers(Authorization=paste("OAuth oauth_token=",token,",oauth_client_id=",client_id)))
+    if(raw$status_code > 200){
+      stop(paste(data$errors$code, "-", data$errors$message))
     }
+    data <- jsonlite::fromJSON(httr::content(raw,type="text", encoding = "UTF-8"))
+    if(is.null(data$mainStats$clicks)) next
+    result <- rbind(result, data.frame(date = as.Date(data$mainStats$date),
+                                       id = as.character(shopid),
+                                       placeGroup = data$mainStats$placeGroup,
+                                       clicks = data$mainStats$clicks,
+                                       spending = data$mainStats$spending,
+                                       shows = as.integer(data$mainStats$shows),
+                                       stringsAsFactors = FALSE)
+    )
   }
   return(result)
 }
