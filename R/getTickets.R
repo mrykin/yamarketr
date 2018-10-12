@@ -25,6 +25,9 @@ getTickets <- function(shops, actualType = NULL, Token = NULL, client_id = "8943
     raw <- httr::GET(url=query, httr::add_headers(Authorization=paste("OAuth oauth_token=", Token,",oauth_client_id=", client_id))
     )
     data <- jsonlite::fromJSON(httr::content(raw,type="text", encoding = "UTF-8"))
+    if(raw$status_code > 200){
+      stop(paste(data$errors$code, "-", data$errors$message))
+    }
     if(length(data$result$tickets) == 0){
       next
     }

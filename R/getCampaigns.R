@@ -12,7 +12,10 @@ getCampaigns <- function(Token = NULL, client_id = "8943390a15784189a8538ce5c4d5
     query <- "https://api.partner.market.yandex.ru/v2/campaigns.json"
     raw <- httr::GET(url=query, httr::add_headers(Authorization=paste("OAuth oauth_token=",Token,",oauth_client_id=",client_id)))
     data <- jsonlite::fromJSON(httr::content(raw,type="text", encoding = "UTF-8"), flatten = TRUE)
-
+    if(raw$status_code > 200){
+      stop(paste(data$errors$code, "-", data$errors$message))
+    }
+    if(is.null(data$campaigns)) next
     for(i in 1:data$pager$total){
       result <- rbind(result, data.frame(id = data$campaigns$id[i],
                                          domain = data$campaigns$domain[i],

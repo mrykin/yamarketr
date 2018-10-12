@@ -15,15 +15,19 @@ getBalance <- function(shops = NULL, Token = NULL, client_id = "8943390a15784189
                        stringsAsFactors = FALSE)
   for(i in 1:nrow(shops)){
     query <- paste0("https://api.partner.market.yandex.ru/v2/campaigns/", shops$id[i], "/balance.json")
-    raw <- httr::GET(url=query, httr::add_headers(Authorization=paste("OAuth oauth_token=",token,",oauth_client_id=",client_id)))
-    data <- httr::content(raw, "parsed", "application/json")
+    raw <- httr::GET(url=query, httr::add_headers(Authorization=paste("OAuth oauth_token=",Token,",oauth_client_id=",client_id)))
+    data <- jsonlite::fromJSON(httr::content(raw,type="text", encoding = "UTF-8"), flatten = TRUE)
+    if(raw$status_code > 200){
+      stop(paste(data$errors$code, "-", data$errors$message))
+    }
+    if(is.null(data$balance)) next
     result <- rbind(result, data.frame(id = as.character(shops$id[i]),
                                        balance = data$balance$balance,
                                        daysLeft = data$balance$daysLeft,
                                        recommendedPayment = data$balance$recommendedPayment,
                                        stringsAsFactors = FALSE)
     )
-    print(shops$domain[i])
+    message(paste("Получены данные -", shops$domain[i]))
   }
   return(result)
 }
