@@ -21,6 +21,13 @@
     <meta name="theme-color" content="#157878">
     <link rel="stylesheet" href="/yamarketr/assets/css/style.css?v=5e04f760021dc7a10a7b47e09f287e45718ee67b">
   </head>
+
+<script>
+window.onload = function() {
+document.getElementById('txt1').innerHTML = window.location.href.slice(window.location.href.indexOf('=') + 1, window.location.href.slice().length);
+}
+</script>
+  
   <body>
     <section class="page-header">
       <h1 class="project-name">yamarketR</h1>
@@ -32,7 +39,13 @@
     </section>
 
     <section class="main-content">
-      <p>Получите свой токен:</p>
+      <h1><center>Авторизация для работы с API Яндекс.Маркет с помощью R клиента <b>yamarketr</b></center></h1>
+        <h2><center>Ваш Код для получения токена:</center></h2>
+        <div class="tok_style">
+        <center>
+        <p><span id='txt1' class="tok_style"></span></p>
+        </center>
+        </div>
 
 
       <footer class="site-footer">
