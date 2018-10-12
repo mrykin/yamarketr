@@ -1,5 +1,5 @@
 #Получаем баланс
-getBalance <- function(shops = NULL, token = NULL, client_id = NULL){
+getBalance <- function(shops = NULL, Token = NULL, client_id = "8943390a15784189a8538ce5c4d57dfb", Login = NULL, TokenPath = getwd()){
   if (is.null(shops)) {
     stop("Укажите список магазинов")
   } else if (is.null(yamtoken)) {
@@ -7,6 +7,9 @@ getBalance <- function(shops = NULL, token = NULL, client_id = NULL){
   } else if (is.null(yamclient_id)){
     stop("Введите client_id вашего приложения")
   }
+  #Авторизация
+  Token <- tech_auth(login = Login, token = Token, TokenPath = TokenPath)
+
   result <- data.frame(id = character(0), domain = character(0),
                        balance = numeric(0), daysLeft = integer(0), recomendedPayment = numeric(0),
                        stringsAsFactors = FALSE)

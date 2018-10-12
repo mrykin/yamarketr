@@ -1,10 +1,12 @@
 #Получаем ошибки по магазинам
-getTickets <- function(shops, actualType = NULL, token = NULL, client_id = NULL){
+getTickets <- function(shops, actualType = NULL, Token = NULL, client_id = "8943390a15784189a8538ce5c4d57dfb", Login = NULL, TokenPath = getwd()){
   if (is.null(token)) {
     stop("Введите свой API-токен")
   } else if (is.null(client_id)){
     stop("Введите client_id вашего приложения")
   }
+  #Авторизация
+  Token <- tech_auth(login = Login, token = Token, TokenPath = TokenPath)
   result <- data.frame(id = character(0),
                        ticketId = character(0),
                        offerURL = numeric(0),
@@ -20,7 +22,7 @@ getTickets <- function(shops, actualType = NULL, token = NULL, client_id = NULL)
   for(i in 1:nrow(shops)){
     query <- paste0("https://api.partner.market.yandex.ru/v2/campaigns/",shops$id[i],"/quality/tickets.json",
                     ifelse(exists("actualType"),paste0("?actualType=",actualType), ""))
-    raw <- httr::GET(url=query, httr::add_headers(Authorization=paste("OAuth oauth_token=", token,",oauth_client_id=", client_id))
+    raw <- httr::GET(url=query, httr::add_headers(Authorization=paste("OAuth oauth_token=", Token,",oauth_client_id=", client_id))
     )
     data <- jsonlite::fromJSON(httr::content(raw,type="text", encoding = "UTF-8"))
     if(length(data$result$tickets) == 0){
