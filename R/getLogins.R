@@ -1,11 +1,7 @@
 # Получаем логины магазинов
 getLogins <- function(shops, howmuch = NULL, Token = NULL,
                       client_id = "8943390a15784189a8538ce5c4d57dfb", Login = NULL, TokenPath = getwd()){
-  if (is.null(Token)) {
-    stop("Введите свой API-токен")
-  } else if (is.null(client_id)){
-    stop("Введите client_id вашего приложения")
-  }
+  
   #Авторизация
   Token <- tech_auth(login = Login, token = Token, TokenPath = TokenPath)
   result <- data.frame(id = character(0), logins = character(0))
