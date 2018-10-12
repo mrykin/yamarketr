@@ -2,7 +2,7 @@
 tech_auth <-  function(login = NULL, token = NULL, TokenPath = NULL) {
 
   # Если задан токен то пропускаем проверку
-  if (! is.null(token) ) {
+  if (! exists("token") ) {
     # Определяем класс объекта содержащего токен
     if(class(token) == "list") {
       Token <- token$access_token
