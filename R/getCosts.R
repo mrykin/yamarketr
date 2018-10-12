@@ -2,7 +2,9 @@
 getCosts <- function(shops,
                      fromDate = format(Sys.Date()-8, "%d-%m-%Y"),
                      toDate = format(Sys.Date()-1, "%d-%m-%Y"),
-                     Token = NULL, client_id = "8943390a15784189a8538ce5c4d57dfb", Login = NULL, TokenPath = getwd(), places = 1, fetchBy = "daily"){
+                     Token = NULL, client_id = "8943390a15784189a8538ce5c4d57dfb",
+                     Login = NULL, TokenPath = getwd(), places = 0, fetchBy = "daily"){
+
   result <- data.frame(date = character(0),
                        id = character(0),
                        placeGroup = numeric(0),
@@ -23,10 +25,10 @@ getCosts <- function(shops,
                     "&fields=shows",
                     ifelse(places == 1, ",model&byPlaces=1", ""))
     raw <- httr::GET(url=query, httr::add_headers(Authorization=paste("OAuth oauth_token=",Token,",oauth_client_id=",client_id)))
+    data <- jsonlite::fromJSON(httr::content(raw,type="text", encoding = "UTF-8"))
     if(raw$status_code > 200){
       stop(paste(data$errors$code, "-", data$errors$message))
     }
-    data <- jsonlite::fromJSON(httr::content(raw,type="text", encoding = "UTF-8"))
     if(is.null(data$mainStats$clicks)) next
     result <- rbind(result, data.frame(date = as.Date(data$mainStats$date),
                                        id = as.character(shopid),
