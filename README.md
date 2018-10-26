@@ -270,10 +270,10 @@ yamarketAuth(Login = "Ваш логин в Яндексе", NewUser = FALSE, Tok
 
 
 
-### getCosts(Campaigns,  \
-                fromDate = format(Sys.Date()-8, "%d-%m-%Y"),  \
-                toDate = format(Sys.Date()-1, "%d-%m-%Y"), \
-                Login = NULL, TokenPath = getwd(),  \
+### getCosts(Campaigns,  
+                fromDate = format(Sys.Date()-8, "%d-%m-%Y"),  
+                toDate = format(Sys.Date()-1, "%d-%m-%Y"), 
+                Login = NULL, TokenPath = getwd(),  
                 places = 0, model = 0, fetchBy = "daily")
 
 [Ссылка на официальную документацию.](https://tech.yandex.ru/market/partner/doc/dg/reference/get-campaigns-id-stats-main-docpage/) \
@@ -381,9 +381,9 @@ yamarketAuth(Login = "Ваш логин в Яндексе", NewUser = FALSE, Tok
 
 
 
-*   **fromDate**, **toDate **- начальная и конечная даты отчётного периода, по умолчанию последние 7 дней. \
+*   **fromDate**, **toDate** - начальная и конечная даты отчётного периода, по умолчанию последние 7 дней. \
 Формат: ДД-ММ-ГГГ ("15-03-2018")
-*   **places **- Признак группировки по местам размещения:
+*   **places** - Признак группировки по местам размещения:
 
     1 — группировать.
 
@@ -393,9 +393,9 @@ yamarketAuth(Login = "Ваш логин в Яндексе", NewUser = FALSE, Tok
 
     По умолчанию места размещения не группируются.
 
-*   **model **- подробная информация о месте размещения предложения на карточке модели. \
+*   **model** - подробная информация о месте размещения предложения на карточке модели. \
 Ограничение. Значение model работает, только если во входных данных задан параметр places со значением: 1 
-*   **fetchBy **= "daily" - признак группировки по дням, неделям, месяцам ("daily", "weekly", "monthly")
+*   **fetchBy** = "daily" - признак группировки по дням, неделям, месяцам ("daily", "weekly", "monthly")
 
 
 ### getLogins(Campaigns, howmuch = NULL, Login = NULL, TokenPath = getwd())
