@@ -117,8 +117,8 @@ yamarketAuth(Login = "Ваш логин в Яндексе", NewUser = FALSE, Tok
 
 ## Функции пакета
 
-
-### getCampaigns(Login = NULL, TokenPath = getwd())
+## Загрузка списка кампаний (магазинов)
+### `getCampaigns(Login = NULL, TokenPath = getwd())`
 
 Данная функция возвращает data.frame со списком всех кампаний доступных в аккаунте которому был выдан токен для доступа к API.
 
@@ -206,8 +206,8 @@ yamarketAuth(Login = "Ваш логин в Яндексе", NewUser = FALSE, Tok
 </table>
 
 
-
-### getBalance(Campaigns = NULL, Login = NULL, TokenPath = getwd())
+## Загрузка текущего баланса магазинов
+### `getBalance(Campaigns = NULL, Login = NULL, TokenPath = getwd())`
 
 [Ссылка на официальную документацию.](https://tech.yandex.ru/market/partner/doc/dg/reference/get-campaigns-id-balance-docpage/) \
 Данная функция возвращает data.frame со списком всех кампаний доступных в аккаунте которому был выдан токен для доступа к API.
@@ -268,9 +268,8 @@ yamarketAuth(Login = "Ваш логин в Яндексе", NewUser = FALSE, Tok
   </tr>
 </table>
 
-
-
-### getCosts(Campaigns, fromDate = format(Sys.Date()-8, "%d-%m-%Y"), toDate = format(Sys.Date()-1, "%d-%m-%Y"), Login = NULL, TokenPath = getwd(), places = 0, model = 0, fetchBy = "daily")
+## Загрузка расхода магазинов за выбранный период
+### `getCosts(Campaigns, fromDate = format(Sys.Date()-8, "%d-%m-%Y"), toDate = format(Sys.Date()-1, "%d-%m-%Y"), Login = NULL, TokenPath = getwd(), places = 0, model = 0, fetchBy = "daily")`
 
 [Ссылка на официальную документацию.](https://tech.yandex.ru/market/partner/doc/dg/reference/get-campaigns-id-stats-main-docpage/) \
 Данная функция возвращает data.frame со расходами магазинов, указанных в переменной Campaigns за последние 7 дней.
@@ -393,8 +392,8 @@ yamarketAuth(Login = "Ваш логин в Яндексе", NewUser = FALSE, Tok
 Ограничение. Значение model работает, только если во входных данных задан параметр places со значением: 1 
 *   **fetchBy** = "daily" - признак группировки по дням, неделям, месяцам ("daily", "weekly", "monthly")
 
-
-### getLogins(Campaigns, howmuch = NULL, Login = NULL, TokenPath = getwd())
+## Загрузка списка логинов, прикреплённых к 
+### `getLogins(Campaigns, howmuch = NULL, Login = NULL, TokenPath = getwd())`
 
 [Ссылка на официальную документацию.](https://tech.yandex.ru/market/partner/doc/dg/reference/get-campaigns-id-logins-docpage/) \
 Данная функция возвращает список логинов, которые прикреплены к выбранным магазинам. Может использоваться для группировки магазинов одного клиента.
