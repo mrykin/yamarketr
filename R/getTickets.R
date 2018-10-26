@@ -1,8 +1,7 @@
 #Получаем ошибки по магазинам
-getTickets <- function(shops, actualType = NULL, Token = NULL, client_id = "8943390a15784189a8538ce5c4d57dfb", Login = NULL, TokenPath = getwd()){
-
+getTickets <- function(Campaigns, actualType = NULL, Login = NULL, TokenPath = getwd()){
   #Авторизация
-  Token <- tech_auth(login = Login, token = Token, TokenPath = TokenPath)
+  Token <- yamarketAuth(Login = Login, TokenPath = TokenPath, NewUser = FALSE)$access_token
   result <- data.frame(id = character(0),
                        ticketId = character(0),
                        offerURL = numeric(0),
@@ -15,10 +14,10 @@ getTickets <- function(shops, actualType = NULL, Token = NULL, client_id = "8943
                        orderId = character(0)
   )
 
-  for(i in 1:nrow(shops)){
-    query <- paste0("https://api.partner.market.yandex.ru/v2/campaigns/",shops$id[i],"/quality/tickets.json",
+  for(i in 1:nrow(Campaigns)){
+    query <- paste0("https://api.partner.market.yandex.ru/v2/campaigns/",Campaigns$id[i],"/quality/tickets.json",
                     ifelse(exists("actualType"),paste0("?actualType=",actualType), ""))
-    raw <- httr::GET(url=query, httr::add_headers(Authorization=paste("OAuth oauth_token=", Token,",oauth_client_id=", client_id))
+    raw <- httr::GET(url=query, httr::add_headers(Authorization=paste("OAuth oauth_token=", Token,",oauth_client_id=8943390a15784189a8538ce5c4d57dfb"))
     )
     data <- jsonlite::fromJSON(httr::content(raw,type="text", encoding = "UTF-8"))
     if(raw$status_code > 200){
@@ -28,7 +27,7 @@ getTickets <- function(shops, actualType = NULL, Token = NULL, client_id = "8943
       next
     }
     data$result$tickets$errorFoundTime <- as.character(lubridate::as_datetime(data$result$tickets$errorFoundTime))
-    result <- rbind(result, data.frame(id = shops$id[i],
+    result <- rbind(result, data.frame(id = Campaigns$id[i],
                                        ticketId = data$result$tickets$ticketId,
                                        offerURL = data$result$tickets$offerURL,
                                        errorText = data$result$tickets$errorText,
