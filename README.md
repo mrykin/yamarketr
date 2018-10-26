@@ -392,7 +392,7 @@ yamarketAuth(Login = "Ваш логин в Яндексе", NewUser = FALSE, Tok
 Ограничение. Значение model работает, только если во входных данных задан параметр places со значением: 1 
 *   **fetchBy** = "daily" - признак группировки по дням, неделям, месяцам ("daily", "weekly", "monthly")
 
-## Загрузка списка логинов, прикреплённых к 
+## Загрузка списка логинов, прикреплённых к кампании (магазину)
 ### `getLogins(Campaigns, howmuch = NULL, Login = NULL, TokenPath = getwd())`
 
 [Ссылка на официальную документацию.](https://tech.yandex.ru/market/partner/doc/dg/reference/get-campaigns-id-logins-docpage/) \
