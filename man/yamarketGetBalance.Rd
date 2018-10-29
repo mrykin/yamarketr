@@ -1,6 +1,6 @@
 \name{yamarketGetBalance}
 \alias{yamarketGetBalance}
-\title{Загрузка текущего баланса магазинов}
+\title{Get balance for shops from Yandex Market}
 \description{Данная функция возвращает data frame со списком всех кампаний доступных в аккаунте которому был выдан токен для доступа к API.}
 \usage{
 yamarketGetBalance(Campaigns = NULL, 
