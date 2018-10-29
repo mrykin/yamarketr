@@ -12,7 +12,7 @@ getCampaigns <- function(Login = NULL, TokenPath = getwd()){
     }
     if(is.null(data$campaigns)) next
     for(i in 1:data$pager$total){
-      result <- rbind(result, data.frame(id = data$campaigns$id[i],
+      result <- rbind(result, data.frame(id = as.character(data$campaigns$id[i]),
                                          domain = data$campaigns$domain[i],
                                          state = as.factor(data$campaigns$state[i]),
                                          stateReasons = paste(mapvalues(unlist(data$campaigns$stateReasons[i]),

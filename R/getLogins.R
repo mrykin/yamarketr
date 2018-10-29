@@ -14,7 +14,7 @@ getLogins <- function(Campaigns, howmuch = NULL,
     if(raw$status_code > 200){
       stop(paste(data$errors$code, "-", data$errors$message))
     }
-    result <- rbind(result, data.frame(id = Campaigns$id[i],
+    result <- rbind(result, data.frame(id = as.character(Campaigns$id[i]),
                                        logins = ifelse(is.null(howmuch),
                                                        paste(data$logins, collapse = ', '),
                                                        data$logins[1:howmuch]),
