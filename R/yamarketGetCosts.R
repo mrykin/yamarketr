@@ -1,5 +1,5 @@
 #Получаем расход
-getCosts <- function(Campaigns,
+yamarketGetCosts <- function(Campaigns,
                      fromDate = format(Sys.Date()-8, "%d-%m-%Y"),
                      toDate = format(Sys.Date()-1, "%d-%m-%Y"),
                      Login = NULL, TokenPath = getwd(), places = 0, model = 0, fetchBy = "daily"){
