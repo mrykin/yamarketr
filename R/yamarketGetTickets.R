@@ -1,5 +1,5 @@
 #Получаем ошибки по магазинам
-getTickets <- function(Campaigns, actualType = NULL, Login = NULL, TokenPath = getwd()){
+yamarketGetTickets <- function(Campaigns, actualType = NULL, Login = NULL, TokenPath = getwd()){
   #Авторизация
   Token <- yamarketAuth(Login = Login, TokenPath = TokenPath, NewUser = FALSE)$access_token
   result <- data.frame(id = character(0),
