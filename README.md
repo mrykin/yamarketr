@@ -9,15 +9,13 @@
 
 
 
-*   Список кампаний (магазинов)
-*   Баланс кампаний
-*   Расход по периодам
-*   Список ошибок
-*   Список логинов
+*   [Список кампаний (магазинов)](https://github.com/mrykin/yamarketr/blob/master/README.md#загрузка-списка-кампаний-магазинов)
+*   [Баланс кампаний](https://github.com/mrykin/yamarketr#загрузка-текущего-баланса-магазинов)
+*   [Расход по периодам](https://github.com/mrykin/yamarketr#загрузка-расхода-магазинов-за-выбранный-период)
+*   [Список логинов](https://github.com/mrykin/yamarketr#загрузка-списка-логинов-прикреплённых-к-кампании-магазину)
+*   Список ошибок (инструкция в разработке)
 
 На очереди работа над функциями:
-
-
 
 *   [Расход по предложениям](https://tech.yandex.ru/market/partner/doc/dg/reference/get-campaigns-id-stats-offers-docpage/)
 *   [Параметры кампании](https://tech.yandex.ru/market/partner/doc/dg/reference/get-campaigns-id-settings-docpage/)
