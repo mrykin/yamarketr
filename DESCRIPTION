@@ -9,6 +9,6 @@ Description: With this package you will get info for status of shops, feeds, pro
     If you have wishes about this package - mail me.
 License: not license it free
 Depends: R (>= 3.4.1)
-Encoding: UTF-8
+Encoding: cp1251
 LazyData: true
 Imports: httr, RCurl, jsonlite, plyr, anytime
