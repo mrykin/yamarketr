@@ -13,7 +13,7 @@ yamarketrWelcomeMessage <- function(){
          "Welcome to yamarketr version ", utils::packageDescription("yamarketr")$Version, "\n",
          "\n",
          "Author:   Pavel Mrykin (Head of analytics dept at MediaGuru).\n",
-         "Email:    mrykin.pavel@gmail.com\n",
+         "Email:    mrykin@mediaguru.ru\n",
          "Facebook: https://facebook.com/mrykin.pavel \n",
          "\n",
          "Type ?yamarketr for the main documentation.\n",
