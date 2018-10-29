@@ -10,4 +10,4 @@ License: not license it free
 Depends: R (>= 3.4.1)
 Encoding: UTF-8
 LazyData: true
-Imports: httr, RCurl, jsonlite
+Imports: httr, RCurl, jsonlite, plyr, anytime
