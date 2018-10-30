@@ -23,6 +23,6 @@ yamarketrGetLogins <- function(Campaigns, howmuch = NULL,
     )
     setTxtProgressBar(pb, i)
   }
-  message(paste("Получены логины для магазинов:", nrow(Campaigns)))
+  message(paste(\n"Получены логины для магазинов:", nrow(Campaigns)))
   return(result)
 }
