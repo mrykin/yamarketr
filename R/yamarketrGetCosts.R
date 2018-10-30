@@ -13,6 +13,7 @@ yamarketrGetCosts <- function(Campaigns,
   )
 
   #Авторизация
+  pb   <- txtProgressBar(1, nrow(Campaigns), style=3)
   Token <- yamarketrAuth(Login = Login, TokenPath = TokenPath, NewUser = FALSE)$access_token
   for(i in 1:ifelse(is.vector(Campaigns), length(Campaigns), nrow(Campaigns))){
     campaignId <- ifelse(is.vector(Campaigns), Campaigns[i], Campaigns$id[i])
@@ -38,7 +39,7 @@ yamarketrGetCosts <- function(Campaigns,
                                        spending = data$mainStats$spending,
                                        stringsAsFactors = FALSE)
     )
-    message(paste("Получены данные:", campaignId, "-", Campaigns$domain[i]))
+    setTxtProgressBar(pb, i)
   }
   result$placeGroup <- plyr::mapvalues(result$placeGroup, from=c(3,4,5,6,7,9,10,11),
                                 to=c("поиск Яндекс.Маркета", "карточки товаров",
@@ -46,5 +47,6 @@ yamarketrGetCosts <- function(Campaigns,
                                      "поиск Яндекса, Яндекс.Картинки, сторонние сайты и сервисы",
                                      "предложение по умолчанию", "блок Топ-6", "остальные места на карточке", "иное"),
                                 warn_missing=FALSE)
+  message(paste("\nЗагрузка завершена!"))
   return(result)
 }
