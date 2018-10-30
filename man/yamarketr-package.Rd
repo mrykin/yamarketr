@@ -7,6 +7,7 @@
 }
 \description{
 \packageDescription{yamarketr}
+
 Подробную инструкцию вы можете найти \href{https://github.com/mrykin/yamarketr}{здесь}
 }
 
