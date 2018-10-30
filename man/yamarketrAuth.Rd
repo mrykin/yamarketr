@@ -4,8 +4,8 @@
 \description{У вас нет необходимости использовать данную функцию отдельно, т.к. она встроена в каждую функцию пакета yamarketr.}
 \usage{
   yamarketrAuth(Login = NULL,
-                    NewUser = FALSE,
-                    TokenPath = getwd())
+                NewUser = FALSE,
+                TokenPath = getwd())
 }
 
 \arguments{
