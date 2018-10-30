@@ -7,13 +7,9 @@
 }
 \description{
 \packageDescription{yamarketr}
+Подробную инструкцию вы можете найти \href{https://github.com/mrykin/yamarketr}{здесь}
 }
-\details{
 
-The DESCRIPTION file:
-\packageDESCRIPTION{yamarketr}
-\packageIndices{yamarketr}
-}
 \author{
 \packageAuthor{yamarketr}
 
