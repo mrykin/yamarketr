@@ -209,7 +209,7 @@ yamarketrAuth(Login = "Ваш логин в Яндексе", NewUser = FALSE, To
 </ul>
 </td>
 </tr>
-  </table>
+</table>
 
 
 ## Загрузка текущего баланса магазинов
