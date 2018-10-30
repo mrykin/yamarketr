@@ -37,6 +37,6 @@ yamarketrGetCampaigns <- function(Login = NULL, TokenPath = getwd()){
   result$state <- plyr::mapvalues(result$state, from=c(1,2,3,4),
                                  to=c("включен", "выключен", "включается", "выключается"),
                                  warn_missing=FALSE)
-  message(paste("Получены", data$pager$total, "магазинов."))
+  message(paste("Получено магазинов:", data$pager$total))
   return(result)
 }
