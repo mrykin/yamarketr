@@ -15,7 +15,7 @@ yamarketrGetCampaigns <- function(Login = NULL, TokenPath = getwd()){
       result <- rbind(result, data.frame(id = as.character(data$campaigns$id[i]),
                                          domain = data$campaigns$domain[i],
                                          state = as.factor(data$campaigns$state[i]),
-                                         stateReasons = paste(mapvalues(unlist(data$campaigns$stateReasons[i]),
+                                         stateReasons = paste(plyr::mapvalues(unlist(data$campaigns$stateReasons[i]),
                                                                         from = c(5,6,7,9,11,12,13,15,16,20,21,24,25),
                                                                         to=c("проверяется",
                                                                              "требуется проверка",
