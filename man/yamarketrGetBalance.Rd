@@ -4,8 +4,8 @@
 \description{Данная функция возвращает data frame со списком всех кампаний доступных в аккаунте которому был выдан токен для доступа к API.}
 \usage{
 yamarketrGetBalance(Campaigns = NULL, 
-                   Login = NULL, 
-                   TokenPath = getwd())
+                    Login = NULL, 
+                    TokenPath = getwd())
 }
 
 \arguments{
