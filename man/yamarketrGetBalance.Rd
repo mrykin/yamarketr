@@ -9,7 +9,7 @@ yamarketrGetBalance(Campaigns = NULL,
 }
 
 \arguments{
-  \item{Campaigns}{data frame, полученный с помощью функции yamarketGetCampaigns, или составленный вручную, например data.frame(id=c(1111111,2222222),domain=c("shop1.ru","shop2.ru"))}
+  \item{Campaigns}{data frame, полученный с помощью функции yamarketrGetCampaigns, или составленный вручную, например data.frame(id=c(1111111,2222222),domain=c("shop1.ru","shop2.ru"))}
   \item{Login}{Логин яндекса, под которым есть доступ к нужным магазинам. В этот вектор необходимо указывать логин в случае если необходимо подключаться к разным аккаунтам. В противном случае при каждом запросе к новому аккаунту - токен будет перезатираться. При указании логина в рабочей директории будет создан отдельный файл под каждый логин, в котором будут хранится нужные для работы учётные данные.}
   \item{TokenPath}{Путь к папке в которой хранятся все файлы с учётными данными.}
 }
@@ -18,7 +18,7 @@ yamarketrGetBalance(Campaigns = NULL,
 \author{Pavel Mrykin}
 
 \seealso{
-Для загрузки списка магазинов используйте \code{\link[yamarketr:yamarketGetCampaigns]{yamarketGetCampaigns}}  
+Для загрузки списка магазинов используйте \code{\link[yamarketr:yamarketrGetCampaigns]{yamarketrGetCampaigns}}  
 }
 
 \examples{
@@ -26,7 +26,7 @@ yamarketrGetBalance(Campaigns = NULL,
 # Подключаем пакет
 library(yamarketr)
 # Получаем список магазинов
-campaigns <- yamarketGetCampaigns(Login = "login", NewUser = TRUE)
+campaigns <- yamarketrGetCampaigns(Login = "login", NewUser = TRUE)
 # Получаем баланс по магазинам
 balance <- yamarketrGetBalance(campaigns, Login = "login")
 }
