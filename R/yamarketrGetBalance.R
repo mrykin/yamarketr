@@ -1,5 +1,5 @@
 #Получаем баланс
-yamarketGetBalance <- function(Campaigns = NULL, Login = NULL, TokenPath = getwd()){
+yamarketrGetBalance <- function(Campaigns = NULL, Login = NULL, TokenPath = getwd()){
   if (is.null(Campaigns)) {
     stop("Укажите список магазинов")
   }
