@@ -71,7 +71,7 @@
     # Подключаем пакет
     library(yamarketr)
     # Получаем список магазинов
-    campaigns <- yamarketrGetCampaigns(Login = "login", NewUser = TRUE)
+    campaigns <- yamarketrGetCampaigns(Login = "login", NewUser = FALSE)
 
     # Получаем расходы по магазинам за последние 7 дней, не включая сегодняшний, по дням, без разбивки по местам размещения
     balance7daysAgo <- yamarketrGetCosts(campaigns, Login = "login")
