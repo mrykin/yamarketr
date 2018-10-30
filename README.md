@@ -402,14 +402,6 @@ yamarketrAuth(Login = "Ваш логин в Яндексе", NewUser = FALSE, To
    </td>
   </tr>
   <tr>
-   <td>date
-   </td>
-   <td>int
-   </td>
-   <td>Дата, за которую был зафиксирован расход
-   </td>
-  </tr>
-  <tr>
    <td>id
    </td>
    <td>int
