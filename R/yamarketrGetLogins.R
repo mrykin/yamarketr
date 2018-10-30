@@ -21,5 +21,6 @@ yamarketrGetLogins <- function(Campaigns, howmuch = NULL,
                                        stringsAsFactors = FALSE)
     )
   }
+  message(paste("Получены логины для магазинов:", data$pager$total))
   return(result)
 }
