@@ -1,4 +1,4 @@
-yamarketAuth <- function(Login = NULL, NewUser = FALSE, TokenPath = getwd()) {
+yamarketrAuth <- function(Login = NULL, NewUser = FALSE, TokenPath = getwd()) {
 
   # Проверяем папку хранения токена
 
