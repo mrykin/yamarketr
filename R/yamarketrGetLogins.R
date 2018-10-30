@@ -1,5 +1,5 @@
 # Получаем логины магазинов
-yamarketGetLogins <- function(Campaigns, howmuch = NULL,
+yamarketrGetLogins <- function(Campaigns, howmuch = NULL,
                       Login = NULL, TokenPath = getwd()){
   #Авторизация
   Token <- yamarketAuth(Login = Login, TokenPath = TokenPath, NewUser = FALSE)$access_token
