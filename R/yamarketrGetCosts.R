@@ -40,7 +40,7 @@ yamarketrGetCosts <- function(Campaigns,
     )
     message(paste("Получены данные:", campaignId, "-", Campaigns$domain[i]))
   }
-  result$placeGroup <- mapvalues(result$placeGroup, from=c(3,4,5,6,7,9,10,11),
+  result$placeGroup <- plyr::mapvalues(result$placeGroup, from=c(3,4,5,6,7,9,10,11),
                                 to=c("поиск Яндекс.Маркета", "карточки товаров",
                                      "Яндекс.Маркет, кроме карточек товаров",
                                      "поиск Яндекса, Яндекс.Картинки, сторонние сайты и сервисы",
