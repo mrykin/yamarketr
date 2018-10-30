@@ -4,7 +4,7 @@ yamarketrGetBalance <- function(Campaigns = NULL, Login = NULL, TokenPath = getw
     stop("Укажите список магазинов")
   }
   #Авторизация
-  Token <- yamarketAuth(Login = Login, TokenPath = TokenPath, NewUser = FALSE)$access_token
+  Token <- yamarketrAuth(Login = Login, TokenPath = TokenPath, NewUser = FALSE)$access_token
 
   result <- data.frame(id = character(0),
                        balance = numeric(0), daysLeft = integer(0), recomendedPayment = numeric(0),
