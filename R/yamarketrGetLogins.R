@@ -2,7 +2,7 @@
 yamarketrGetLogins <- function(Campaigns, howmuch = NULL,
                       Login = NULL, TokenPath = getwd()){
   #Авторизация
-  Token <- yamarketAuth(Login = Login, TokenPath = TokenPath, NewUser = FALSE)$access_token
+  Token <- yamarketrAuth(Login = Login, TokenPath = TokenPath, NewUser = FALSE)$access_token
   result <- data.frame(id = character(0), logins = character(0))
 
   for(i in 1:nrow(Campaigns)){
