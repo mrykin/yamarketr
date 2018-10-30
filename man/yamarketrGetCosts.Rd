@@ -1,9 +1,9 @@
-\name{yamarkertGetCosts}
-\alias{yamarkertGetCosts}
+\name{yamarkertrGetCosts}
+\alias{yamarkertrGetCosts}
 \title{Get costs for shops from Yandex Market}
 \description{Данная функция возвращает data frame с расходами по магазинам. Указание доп. параметров позволяет задать дополнительную разбивку по периодам (день/месяц/год) и местам размещения.}
 \usage{
-  yamarkertGetCosts(Campaigns,
+  yamarkertrGetCosts(Campaigns,
                    fromDate = format(Sys.Date()-8, "%d-%m-%Y"),
                    toDate = format(Sys.Date()-1, "%d-%m-%Y"),
                    Login = NULL,
@@ -74,10 +74,10 @@
     campaigns <- yamarketGetCampaigns(Login = "login", NewUser = TRUE)
 
     # Получаем расходы по магазинам за последние 7 дней, не включая сегодняшний, по дням, без разбивки по местам размещения
-    balance7daysAgo <- yamarkertGetCosts(campaigns, Login = "login")
+    balance7daysAgo <- yamarkertrGetCosts(campaigns, Login = "login")
 
     # Получаем расходы по магазинам с 1 января до 30 сентября, по месяцам, с разбивкой по местам размещения
-    balancePlaces <- yamarkertGetCosts(campaigns,
+    balancePlaces <- yamarkertrGetCosts(campaigns,
                                       Login = "login",
                                       dateFrom="01-01-2018",
                                       dateFrom="30-09-2018",
