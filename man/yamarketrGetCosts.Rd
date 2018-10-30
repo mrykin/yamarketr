@@ -63,7 +63,7 @@
 \author{Pavel Mrykin}
 
 \seealso{
-  Для загрузки списка магазинов используйте \code{\link[yamarketr:yamarketGetCampaigns]{yamarketGetCampaigns}}
+  Для загрузки списка магазинов используйте \code{\link[yamarketr:yamarketrGetCampaigns]{yamarketrGetCampaigns}}
 }
 
 \examples{
