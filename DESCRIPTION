@@ -5,7 +5,8 @@ Version: 1.1.5
 Date: 2018-10-29
 Author: Pavel Mrykin
 Maintainer: Pavel Mrykin <mrykin@mediaguru.ru>
-Description: Данный пакет позволяет получить список ваших магазинво, их текущий статус, баланс, расход, список логинов у которых есть доступ к магазину, список ошибок. Список функций будет пополняться. Если у вас есть пожелания по функциям и развитию пакета - напишите мне на еmail.
+Description: Description: With this package you will get info for status of shops, feeds, products information (compiteters prices for example).
+    If you have wishes about this package - mail me.
 License: not license it free
 Depends: R (>= 3.4.1)
 Encoding: UTF-8
