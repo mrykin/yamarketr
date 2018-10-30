@@ -85,7 +85,7 @@ setwd("C:/Tokens/yamarketR")
 
 
 ```
-yamarketAuth(Login = "Ваш логин в Яндексе", NewUser = FALSE, TokenPath = "путь к папке для сохранения токена")
+yamarketrAuth(Login = "Ваш логин в Яндексе", NewUser = FALSE, TokenPath = "путь к папке для сохранения токена")
 ```
 
 
@@ -93,7 +93,7 @@ yamarketAuth(Login = "Ваш логин в Яндексе", NewUser = FALSE, Tok
 
 При каждом обращении к API проверяется количество дней до того как используемый токен станет просроченным, если остаётся менее 30 дней токен автоматически будет обновлён, и файл с учётными данными перезаписан.
 
-**Аргументы функции yamarketAuth**
+**Аргументы функции yamarketrAuth**
 
 
 
@@ -116,11 +116,11 @@ yamarketAuth(Login = "Ваш логин в Яндексе", NewUser = FALSE, Tok
 ## Функции пакета
 
 ## Загрузка списка кампаний (магазинов)
-### `yamarketGetCampaigns(Login = NULL, TokenPath = getwd())`
+### `yamarketrGetCampaigns(Login = NULL, TokenPath = getwd())`
 
 Данная функция возвращает data.frame со списком всех кампаний доступных в аккаунте которому был выдан токен для доступа к API.
 
-Структура data.frame, возвращаемого функцией `yamarketGetCampaigns`:
+Структура data.frame, возвращаемого функцией `yamarketrGetCampaigns`:
 
 
 <table>
@@ -205,12 +205,12 @@ yamarketAuth(Login = "Ваш логин в Яндексе", NewUser = FALSE, Tok
 
 
 ## Загрузка текущего баланса магазинов
-### `yamarketGetBalance(Campaigns = NULL, Login = NULL, TokenPath = getwd())`
+### `yamarketrGetBalance(Campaigns = NULL, Login = NULL, TokenPath = getwd())`
 
 [Ссылка на официальную документацию.](https://tech.yandex.ru/market/partner/doc/dg/reference/get-campaigns-id-balance-docpage/) \
 Данная функция возвращает data.frame со списком всех кампаний доступных в аккаунте которому был выдан токен для доступа к API.
 
-Структура data.frame, возвращаемого функцией `yamarketGetCampaigns`:
+Структура data.frame, возвращаемого функцией `yamarketrGetCampaigns`:
 
 
 <table>
@@ -266,12 +266,12 @@ yamarketAuth(Login = "Ваш логин в Яндексе", NewUser = FALSE, Tok
 </table>
 
 ## Загрузка расхода магазинов за выбранный период
-### `yamarketGetCosts(Campaigns, fromDate = format(Sys.Date()-8, "%d-%m-%Y"), toDate = format(Sys.Date()-1, "%d-%m-%Y"), Login = NULL, TokenPath = getwd(), places = 0, model = 0, fetchBy = "daily")`
+### `yamarketrGetCosts(Campaigns, fromDate = format(Sys.Date()-8, "%d-%m-%Y"), toDate = format(Sys.Date()-1, "%d-%m-%Y"), Login = NULL, TokenPath = getwd(), places = 0, model = 0, fetchBy = "daily")`
 
 [Ссылка на официальную документацию.](https://tech.yandex.ru/market/partner/doc/dg/reference/get-campaigns-id-stats-main-docpage/) \
 Данная функция возвращает data.frame со расходами магазинов, указанных в переменной Campaigns за последние 7 дней.
 
-Структура data.frame, возвращаемого функцией `yamarketGetCosts:`
+Структура data.frame, возвращаемого функцией `yamarketrGetCosts:`
 
 
 <table>
@@ -384,12 +384,12 @@ yamarketAuth(Login = "Ваш логин в Яндексе", NewUser = FALSE, Tok
 *   **fetchBy** = "daily" - признак группировки по дням, неделям, месяцам ("daily", "weekly", "monthly")
 
 ## Загрузка списка логинов, прикреплённых к кампании (магазину)
-### `yamarketGetLogins(Campaigns, howmuch = NULL, Login = NULL, TokenPath = getwd())`
+### `yamarketrGetLogins(Campaigns, howmuch = NULL, Login = NULL, TokenPath = getwd())`
 
 [Ссылка на официальную документацию.](https://tech.yandex.ru/market/partner/doc/dg/reference/get-campaigns-id-logins-docpage/) \
 Данная функция возвращает список логинов, которые прикреплены к выбранным магазинам. Может использоваться для группировки магазинов одного клиента.
 
-Структура data.frame, возвращаемого функцией `yamarketGetLogins:`
+Структура data.frame, возвращаемого функцией `yamarketrGetLogins:`
 
 
 <table>
@@ -437,13 +437,13 @@ yamarketAuth(Login = "Ваш логин в Яндексе", NewUser = FALSE, Tok
 Ограничение задаётся с помощью чисел 1, 2, 3 и т.д.
 
 ## Загрузка информации об ошибках магазинов
-### `yamarketGetTickets(Campaigns, actualType = NULL, Login = NULL, TokenPath = getwd())`
+### `yamarketrGetTickets(Campaigns, actualType = NULL, Login = NULL, TokenPath = getwd())`
 
 [Ссылка на официальную документацию.](https://tech.yandex.ru/market/partner/doc/dg/reference/get-campaigns-id-quality-tickets-docpage/)
 
 Данная функция возвращает данные о текущих [ошибках магазина](https://yandex.ru/support/partnermarket/quality/types-of-mistake.xml), выявленных службой контроля качества Яндекс.Маркета.
 
-Структура data.frame, возвращаемого функцией `yamarketGetTickets:`
+Структура data.frame, возвращаемого функцией `yamarketrGetTickets:`
 
 
 <table>
