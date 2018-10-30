@@ -1,7 +1,7 @@
 # Получаем список магазинов
 yamarketrGetCampaigns <- function(Login = NULL, TokenPath = getwd()){
   #Авторизация
-  Token <- yamarketAuth(Login = Login, TokenPath = TokenPath, NewUser = FALSE)$access_token
+  Token <- yamarketrAuth(Login = Login, TokenPath = TokenPath, NewUser = FALSE)$access_token
   result <- data.frame(id = character(0), domain = character(0), state = numeric(0), stateReasons = numeric(0))
   while(nrow(result) == 0) {
     query <- "https://api.partner.market.yandex.ru/v2/campaigns.json"
