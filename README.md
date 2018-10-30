@@ -167,7 +167,6 @@ yamarketrAuth(Login = "Ваш логин в Яндексе", NewUser = FALSE, To
 <li>выключен.
 <li>включается.
 <li>выключается.</li></ul>
-
    </td>
   </tr>
   <tr>
