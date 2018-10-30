@@ -1,9 +1,9 @@
-\name{yamarketGetBalance}
-\alias{yamarketGetBalance}
+\name{yamarketrGetBalance}
+\alias{yamarketrGetBalance}
 \title{Get balance for shops from Yandex Market}
 \description{Данная функция возвращает data frame со списком всех кампаний доступных в аккаунте которому был выдан токен для доступа к API.}
 \usage{
-yamarketGetBalance(Campaigns = NULL, 
+yamarketrGetBalance(Campaigns = NULL, 
                    Login = NULL, 
                    TokenPath = getwd())
 }
@@ -18,7 +18,7 @@ yamarketGetBalance(Campaigns = NULL,
 \author{Pavel Mrykin}
 
 \seealso{
-Для загрузки списка магазинов используйте \code{\link[yamarketr:yamarketGetCampaigns]{yamarketGetCampaigns}}	
+Для загрузки списка магазинов используйте \code{\link[yamarketr:yamarketGetCampaigns]{yamarketGetCampaigns}}  
 }
 
 \examples{
@@ -28,6 +28,6 @@ library(yamarketr)
 # Получаем список магазинов
 campaigns <- yamarketGetCampaigns(Login = "login", NewUser = TRUE)
 # Получаем баланс по магазинам
-balance <- yamarketGetBalance(campaigns, Login = "login")
+balance <- yamarketrGetBalance(campaigns, Login = "login")
 }
 }
