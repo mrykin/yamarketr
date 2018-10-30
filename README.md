@@ -206,7 +206,8 @@ yamarketrAuth(Login = "Ваш логин в Яндексе", NewUser = FALSE, To
 ## Загрузка текущего баланса магазинов
 ### `yamarketrGetBalance(Campaigns = NULL, Login = NULL, TokenPath = getwd())`
 
-[Ссылка на официальную документацию.](https://tech.yandex.ru/market/partner/doc/dg/reference/get-campaigns-id-balance-docpage/) \
+[Ссылка на официальную документацию.](https://tech.yandex.ru/market/partner/doc/dg/reference/get-campaigns-id-balance-docpage/)
+
 Данная функция возвращает data.frame со списком всех кампаний доступных в аккаунте которому был выдан токен для доступа к API.
 
 Структура data.frame, возвращаемого функцией `yamarketrGetCampaigns`:
@@ -251,7 +252,8 @@ yamarketrAuth(Login = "Ваш логин в Яндексе", NewUser = FALSE, To
 ## Загрузка расхода магазинов за выбранный период
 ### `yamarketrGetCosts(Campaigns, fromDate = format(Sys.Date()-8, "%d-%m-%Y"), toDate = format(Sys.Date()-1, "%d-%m-%Y"), Login = NULL, TokenPath = getwd(), places = 0, model = 0, fetchBy = "daily")`
 
-[Ссылка на официальную документацию.](https://tech.yandex.ru/market/partner/doc/dg/reference/get-campaigns-id-stats-main-docpage/) \
+[Ссылка на официальную документацию.](https://tech.yandex.ru/market/partner/doc/dg/reference/get-campaigns-id-stats-main-docpage/) 
+
 Данная функция возвращает data.frame со расходами магазинов, указанных в переменной Campaigns за последние 7 дней.
 
 Структура data.frame, возвращаемого функцией `yamarketrGetCosts:`
@@ -325,26 +327,27 @@ yamarketrAuth(Login = "Ваш логин в Яндексе", NewUser = FALSE, To
 
 
 
-*   **fromDate**, **toDate** - начальная и конечная даты отчётного периода, по умолчанию последние 7 дней. \
-Формат: ДД-ММ-ГГГ ("15-03-2018")
+*   **fromDate**, **toDate** - начальная и конечная даты отчётного периода, по умолчанию последние 7 дней. 
+
+	Формат: ДД-ММ-ГГГ ("15-03-2018")
 *   **places** - Признак группировки по местам размещения:
 
     1 — группировать.
 
-
     0 — не группировать.
-
 
     По умолчанию места размещения не группируются.
 
-*   **model** - подробная информация о месте размещения предложения на карточке модели. \
-Ограничение. Значение model работает, только если во входных данных задан параметр places со значением: 1 
+*   **model** - подробная информация о месте размещения предложения на карточке модели. 
+
+	Ограничение. Значение model работает, только если во входных данных задан параметр places со значением: 1 
 *   **fetchBy** = "daily" - признак группировки по дням, неделям, месяцам ("daily", "weekly", "monthly")
 
 ## Загрузка списка логинов, прикреплённых к кампании (магазину)
 ### `yamarketrGetLogins(Campaigns, howmuch = NULL, Login = NULL, TokenPath = getwd())`
 
-[Ссылка на официальную документацию.](https://tech.yandex.ru/market/partner/doc/dg/reference/get-campaigns-id-logins-docpage/) \
+[Ссылка на официальную документацию.](https://tech.yandex.ru/market/partner/doc/dg/reference/get-campaigns-id-logins-docpage/)
+
 Данная функция возвращает список логинов, которые прикреплены к выбранным магазинам. Может использоваться для группировки магазинов одного клиента.
 
 Структура data.frame, возвращаемого функцией `yamarketrGetLogins:`
@@ -373,9 +376,11 @@ yamarketrAuth(Login = "Ваш логин в Яндексе", NewUser = FALSE, To
 
 
 
-*   **howmuch** - атрибут определяет количество логинов, которые нужно вывести. \
-По умолчанию - возвращаются все логины у которых есть доступ к магазину. \
-Ограничение задаётся с помощью чисел 1, 2, 3 и т.д.
+*   **howmuch** - атрибут определяет количество логинов, которые нужно вывести.
+
+	По умолчанию - возвращаются все логины у которых есть доступ к магазину.
+
+	Ограничение задаётся с помощью чисел 1, 2, 3 и т.д.
 
 ## Загрузка информации об ошибках магазинов
 ### `yamarketrGetTickets(Campaigns, actualType = NULL, Login = NULL, TokenPath = getwd())`
