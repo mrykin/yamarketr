@@ -1,7 +1,7 @@
 # yamarketR - пакет для работы <br/>с Партнёрским API Яндекс.Маркета <br/>на языке R
 
 <p align="center">
-<a href="mrykin.github.io/yamarketr/"><img src="https://www.mediaguru.ru/upload/mrykin_github_cover.png" height="267"></a>
+<img src="https://www.mediaguru.ru/upload/mrykin_github_cover.png" height="267">
 </p>
 
 
