@@ -52,7 +52,7 @@ library(devtools)
 
 
 ```r
-install_github('mrykinpavel/yamarketr')
+install_github('mrykin/yamarketr')
 ```
 
 
