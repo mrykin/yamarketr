@@ -26,11 +26,11 @@
 Функции пакета постепенно будут добавляться и расширяться в описании будет указаны статус разработки и планируемые изменения.
 
 ## Автор пакета
-Павел Мрыкин, 
+**Павел Мрыкин**, <br />
 Руководитель отдела автоматизации и аналитики MediaGuru
 <Br>email: mrykin@mediaguru.ru
 <Br>skype: mrykin.pavel
-<Br>facebook: facebook.com/mrykin.pavel
+<Br>facebook: [facebook.com/mrykin.pavel](https://facebook.com/mrykin.pavel)
 <Br>blog: www.mediaguru.ru/blog/
 
 ## Установка пакета yamarketR
