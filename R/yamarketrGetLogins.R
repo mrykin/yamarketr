@@ -11,7 +11,8 @@ yamarketrGetLogins <- function(Campaigns, howmuch = NULL,
   #Авторизация
   Token <- yamarketrAuth(Login = Login, TokenPath = TokenPath, NewUser = FALSE)$access_token
   for(i in nrowCampaigns){
-    query <- paste0("https://api.partner.market.yandex.ru/v2/campaigns/",Campaigns$id[i],"/logins.json")
+    campaignId <- ifelse(is.vector(Campaigns), Campaigns[i], Campaigns$id[i])
+    query <- paste0("https://api.partner.market.yandex.ru/v2/campaigns/",campaignId,"/logins.json")
     raw <- httr::GET(url=query,
                      httr::add_headers(Authorization=paste0("OAuth oauth_token=",
                                                             Token,",oauth_client_id=8943390a15784189a8538ce5c4d57dfb")))
