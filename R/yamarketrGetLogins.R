@@ -10,7 +10,7 @@ yamarketrGetLogins <- function(Campaigns, howmuch = NULL,
   pb   <- txtProgressBar(1, nrowCampaigns, style=3)
   #Авторизация
   Token <- yamarketrAuth(Login = Login, TokenPath = TokenPath, NewUser = FALSE)$access_token
-  for(i in nrowCampaigns)){
+  for(i in nrowCampaigns){
     query <- paste0("https://api.partner.market.yandex.ru/v2/campaigns/",Campaigns$id[i],"/logins.json")
     raw <- httr::GET(url=query,
                      httr::add_headers(Authorization=paste0("OAuth oauth_token=",
