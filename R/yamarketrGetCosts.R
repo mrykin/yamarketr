@@ -29,7 +29,7 @@ yamarketrGetCosts <- function(Campaigns,
     raw <- httr::GET(url=query, httr::add_headers(Authorization=paste("OAuth oauth_token=",Token,",oauth_client_id=8943390a15784189a8538ce5c4d57dfb")))
     data <- jsonlite::fromJSON(httr::content(raw,type="text", encoding = "UTF-8"))
     if(raw$status_code > 200){
-      stop(paste(data$errors$code, "-", data$errors$message, "-", Campaigns$id[i]))
+      stop(paste(data$errors$code, "-", data$errors$message, "-", campaignId))
     }
     if(is.null(data$mainStats$clicks)) next
     result <- rbind(result, data.frame(date = as.Date(data$mainStats$date),
