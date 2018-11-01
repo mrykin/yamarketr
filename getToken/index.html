@@ -53,15 +53,18 @@
           text-align:center;
           font-weight: bold;
       }
+      #txt1{
+        border: none;
+        text-align: center;
+      }
       .site-footer{
-      text-align:center;}
+        text-align:center;}
     </style>
   </head>
 
 <script>
 window.onload = function() {
-document.getElementById('txt1').innerHTML = window.location.href.slice(window.location.href.indexOf('=') + 1, window.location.href.slice().length);
-}
+document.getElementById('txt1').value = window.location.href.slice(window.location.href.indexOf('=') + 1, window.location.href.slice().length);}
 </script>
   
   <body>
@@ -80,7 +83,8 @@ document.getElementById('txt1').innerHTML = window.location.href.slice(window.lo
         <div class="tok_style">
         <center>
         <p>
-          <span id='txt1' class="tok_style"></span><br />
+          <input type="text" value="в ссылке нет кода" id="txt1">
+          </p><p>
           <button onclick="copyCode()">Скопировать код</button>
          </p>
         </center>
