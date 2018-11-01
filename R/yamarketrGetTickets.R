@@ -18,7 +18,7 @@ yamarketrGetTickets <- function(Campaigns, actualType = NULL, Login = NULL, Toke
   Token <- yamarketrAuth(Login = Login, TokenPath = TokenPath, NewUser = FALSE)$access_token
   for(i in nrowCampaigns){
     campaignId <- ifelse(is.vector(Campaigns), Campaigns[i], Campaigns$id[i])
-    query <- paste0("https://api.partner.market.yandex.ru/v2/campaigns/",Campaigns$id[i],"/quality/tickets.json",
+    query <- paste0("https://api.partner.market.yandex.ru/v2/campaigns/",campaignId,"/quality/tickets.json",
                     ifelse(exists("actualType"),paste0("?actualType=",actualType), ""))
     raw <- httr::GET(url=query, httr::add_headers(Authorization=paste("OAuth oauth_token=", Token,",oauth_client_id=8943390a15784189a8538ce5c4d57dfb"))
     )
