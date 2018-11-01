@@ -1,12 +1,16 @@
 # Получаем логины магазинов
 yamarketrGetLogins <- function(Campaigns, howmuch = NULL,
                       Login = NULL, TokenPath = getwd()){
+  
+  result <- data.frame(id = character(0), logins = character(0))
+
+  Token <- yamarketrAuth(Login = Login, TokenPath = TokenPath, NewUser = FALSE)$access_token
+ 
+  nrowCampaigns <- ifelse(is.vector(Campaigns), length(Campaigns), nrow(Campaigns))
+  pb   <- txtProgressBar(1, nrowCampaigns, style=3)
   #Авторизация
   Token <- yamarketrAuth(Login = Login, TokenPath = TokenPath, NewUser = FALSE)$access_token
-  result <- data.frame(id = character(0), logins = character(0))
-  
-  pb   <- txtProgressBar(1, nrow(Campaigns), style=3)
-  for(i in 1:nrow(Campaigns)){
+  for(i in nrowCampaigns)){
     query <- paste0("https://api.partner.market.yandex.ru/v2/campaigns/",Campaigns$id[i],"/logins.json")
     raw <- httr::GET(url=query,
                      httr::add_headers(Authorization=paste0("OAuth oauth_token=",
