@@ -1,7 +1,5 @@
 #Получаем ошибки по магазинам
 yamarketrGetTickets <- function(Campaigns, actualType = NULL, Login = NULL, TokenPath = getwd()){
-  #Авторизация
-  Token <- yamarketrAuth(Login = Login, TokenPath = TokenPath, NewUser = FALSE)$access_token
   result <- data.frame(id = character(0),
                        ticketId = character(0),
                        offerURL = numeric(0),
@@ -13,8 +11,12 @@ yamarketrGetTickets <- function(Campaigns, actualType = NULL, Login = NULL, Toke
                        status = numeric(0),
                        orderId = character(0)
   )
-  pb   <- txtProgressBar(1, nrow(Campaigns), style=3)
-  for(i in 1:nrow(Campaigns)){
+  
+  nrowCampaigns <- ifelse(is.vector(Campaigns), length(Campaigns), nrow(Campaigns))
+  pb   <- txtProgressBar(1, nrowCampaigns, style=3)
+  #Авторизация
+  Token <- yamarketrAuth(Login = Login, TokenPath = TokenPath, NewUser = FALSE)$access_token
+  for(i in nrowCampaigns)){
     campaignId <- ifelse(is.vector(Campaigns), Campaigns[i], Campaigns$id[i])
     query <- paste0("https://api.partner.market.yandex.ru/v2/campaigns/",Campaigns$id[i],"/quality/tickets.json",
                     ifelse(exists("actualType"),paste0("?actualType=",actualType), ""))
