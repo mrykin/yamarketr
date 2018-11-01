@@ -15,7 +15,7 @@ yamarketrGetTickets <- function(Campaigns, actualType = NULL, Login = NULL, Toke
   )
   nrowCampaigns <- ifelse(is.vector(Campaigns), length(Campaigns), nrow(Campaigns))
   pb   <- txtProgressBar(1, nrowCampaigns, style=3)
-  for(i in nrowCampaigns){
+  for(i in 1:nrowCampaigns){
     campaignId <- ifelse(is.vector(Campaigns), Campaigns[i], Campaigns$id[i])
     query <- paste0("https://api.partner.market.yandex.ru/v2/campaigns/",campaignId,"/quality/tickets.json",
                     ifelse(exists("actualType"),paste0("?actualType=",actualType), ""))
