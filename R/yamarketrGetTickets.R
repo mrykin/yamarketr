@@ -16,7 +16,7 @@ yamarketrGetTickets <- function(Campaigns, actualType = NULL, Login = NULL, Toke
   pb   <- txtProgressBar(1, nrowCampaigns, style=3)
   #Авторизация
   Token <- yamarketrAuth(Login = Login, TokenPath = TokenPath, NewUser = FALSE)$access_token
-  for(i in nrowCampaigns)){
+  for(i in nrowCampaigns){
     campaignId <- ifelse(is.vector(Campaigns), Campaigns[i], Campaigns$id[i])
     query <- paste0("https://api.partner.market.yandex.ru/v2/campaigns/",Campaigns$id[i],"/quality/tickets.json",
                     ifelse(exists("actualType"),paste0("?actualType=",actualType), ""))
