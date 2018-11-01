@@ -24,12 +24,12 @@ yamarketrGetTickets <- function(Campaigns, actualType = NULL, Login = NULL, Toke
     )
     data <- jsonlite::fromJSON(httr::content(raw,type="text", encoding = "UTF-8"))
     if(raw$status_code > 200){
-      stop(paste(data$errors$code, "-", data$errors$message, "-", Campaigns$id[i]))
+      stop(paste(data$errors$code, "-", data$errors$message, "-", campaignId))
     }
     if(length(data$result$tickets) == 0){
       next
     }
-    result <- rbind(result, data.frame(id = as.character(Campaigns$id[i]),
+    result <- rbind(result, data.frame(id = as.character(campaignId),
                                        ticketId = data$result$tickets$ticketId,
                                        offerURL = data$result$tickets$offerURL,
                                        errorText = as.factor(data$result$tickets$errorText),
