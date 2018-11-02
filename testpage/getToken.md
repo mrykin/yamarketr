@@ -27,12 +27,3 @@ permalink: /getTokenTest/
 </center>
 </div>
 
-
-  <footer class="site-footer">
-    {% if site.github.is_project_page %}
-      <span class="site-footer-owner"><a href="{{ site.github.repository_url }}">{{ site.github.repository_name }}</a> разработан и поддерживается <a href="https://facebook.com/mrykin.pavel" target="_blank">Павел Мрыкин</a>.
-        <br /><a href="https://www.mediaguru.ru/" target="_blank">MediaGuru</a>
-      </span>
-    {% endif %}
-  </footer>
-
