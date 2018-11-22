@@ -1,8 +1,8 @@
 #Получаем расход
 yamarketrGetCosts <- function(Campaigns,
-                     fromDate = format(Sys.Date()-8, "%d-%m-%Y"),
-                     toDate = format(Sys.Date()-1, "%d-%m-%Y"),
-                     Login = NULL, TokenPath = getwd(), places = 0, model = 0, fetchBy = "daily"){
+                              fromDate = format(Sys.Date()-8, "%d-%m-%Y"),
+                              toDate = format(Sys.Date()-1, "%d-%m-%Y"),
+                              Login = NULL, TokenPath = getwd(), places = 0, model = 0, fetchBy = "daily"){
 
   result <- data.frame(date = character(0),
                        id = character(0),
@@ -12,8 +12,10 @@ yamarketrGetCosts <- function(Campaigns,
                        shows = numeric(0)
   )
 
-  nrowCampaigns <- ifelse(is.vector(Campaigns), length(Campaigns), nrow(Campaigns))
-  pb   <- txtProgressBar(1, nrowCampaigns, style=3)
+  nrowCampaigns <- ifelse((is.vector(Campaigns) | is.numeric(Campaigns) | is.character(Campaigns)), length(Campaigns), nrow(Campaigns))
+  if (nrowCampaigns > 1){
+    pb   <- txtProgressBar(1, nrowCampaigns, style=3)
+  }
   #Авторизация
   Token <- yamarketrAuth(Login = Login, TokenPath = TokenPath, NewUser = FALSE)$access_token
   for(i in 1:nrowCampaigns){
@@ -40,14 +42,16 @@ yamarketrGetCosts <- function(Campaigns,
                                        spending = data$mainStats$spending,
                                        stringsAsFactors = FALSE)
     )
-    setTxtProgressBar(pb, i)
+    if (nrowCampaigns > 1){
+      setTxtProgressBar(pb, i)
+    }
   }
   result$placeGroup <- plyr::mapvalues(result$placeGroup, from=c(3,4,5,6,7,9,10,11),
-                                to=c("поиск Яндекс.Маркета", "карточки товаров",
-                                     "Яндекс.Маркет, кроме карточек товаров",
-                                     "поиск Яндекса, Яндекс.Картинки, сторонние сайты и сервисы",
-                                     "предложение по умолчанию", "блок Топ-6", "остальные места на карточке", "иное"),
-                                warn_missing=FALSE)
+                                       to=c("поиск Яндекс.Маркета", "карточки товаров",
+                                            "Яндекс.Маркет, кроме карточек товаров",
+                                            "поиск Яндекса, Яндекс.Картинки, сторонние сайты и сервисы",
+                                            "предложение по умолчанию", "блок Топ-6", "остальные места на карточке", "иное"),
+                                       warn_missing=FALSE)
   message(paste("\nЗагрузка завершена!"))
   return(result)
 }
