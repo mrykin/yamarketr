@@ -74,13 +74,13 @@
     campaigns <- yamarketrGetCampaigns(Login = "login", NewUser = FALSE)
 
     # Получаем расходы по магазинам за последние 7 дней, не включая сегодняшний, по дням, без разбивки по местам размещения
-    balance7daysAgo <- yamarketrGetCosts(campaigns, Login = "login")
+    costs7daysAgo <- yamarketrGetCosts(campaigns, Login = "login")
 
     # Получаем расходы по магазинам с 1 января до 30 сентября, по месяцам, с разбивкой по местам размещения
-    balancePlaces <- yamarketrGetCosts(campaigns,
+    costsPlaces <- yamarketrGetCosts(campaigns,
                                       Login = "login",
-                                      dateFrom="01-01-2018",
-                                      dateFrom="30-09-2018",
+                                      fromDate = "01-01-2018",
+                                      toDate = "30-09-2018",
                                       places = 1,
                                       model = 1,
                                       fetchBy = "monthly")
