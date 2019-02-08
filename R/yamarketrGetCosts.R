@@ -40,6 +40,9 @@ yamarketrGetCosts <- function(Campaigns,
     if(raw$status_code > 200){
       stop(paste(data$errors$code, "-", data$errors$message, "-", campaignId))
     }
+    if (nrowCampaigns > 1){
+      setTxtProgressBar(pb, i)
+    }
     if(is.null(data$mainStats$clicks)) next
     result <- rbind(result, data.frame(date = as.Date(data$mainStats$date),
                                        id = as.character(campaignId),
@@ -49,9 +52,6 @@ yamarketrGetCosts <- function(Campaigns,
                                        spending = data$mainStats$spending,
                                        stringsAsFactors = FALSE)
     )
-    if (nrowCampaigns > 1){
-      setTxtProgressBar(pb, i)
-    }
   }
   result$placeGroup <- plyr::mapvalues(result$placeGroup, from=c(3,4,5,6,7,9,10,11),
                                        to=c("поиск Яндекс.Маркета", "карточки товаров",
