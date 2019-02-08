@@ -28,7 +28,14 @@ yamarketrGetCosts <- function(Campaigns,
                     "&toDate=",toDate,
                     "&fields=shows",ifelse(model == 1, ",model", ""),
                     ifelse(places == 1, "&byPlaces=1", ""))
-    raw <- httr::GET(url=query, httr::add_headers(Authorization=paste("OAuth oauth_token=",Token,",oauth_client_id=8943390a15784189a8538ce5c4d57dfb")))
+    raw <- httr::RETRY("GET", 
+                       url = query, 
+                       httr::add_headers(Authorization = paste("OAuth oauth_token=", Token,
+                                                               ",oauth_client_id=8943390a15784189a8538ce5c4d57dfb")),
+                       times = 5, 
+                       pause_min = 20, 
+                       terminate_on_success=FALSE
+                      )
     data <- jsonlite::fromJSON(httr::content(raw,type="text", encoding = "UTF-8"))
     if(raw$status_code > 200){
       stop(paste(data$errors$code, "-", data$errors$message, "-", campaignId))
