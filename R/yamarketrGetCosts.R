@@ -19,6 +19,9 @@ yamarketrGetCosts <- function(Campaigns,
   #Авторизация
   Token <- yamarketrAuth(Login = Login, TokenPath = TokenPath, NewUser = FALSE)$access_token
   for(i in 1:nrowCampaigns){
+    if (nrowCampaigns > 1){
+      setTxtProgressBar(pb, i)
+    }
     campaignId <- ifelse(is.vector(Campaigns), Campaigns[i], Campaigns$id[i])
     query <- paste0("https://api.partner.market.yandex.ru/v2/campaigns/",
                     campaignId,
@@ -39,9 +42,6 @@ yamarketrGetCosts <- function(Campaigns,
     data <- jsonlite::fromJSON(httr::content(raw,type="text", encoding = "UTF-8"))
     if(raw$status_code > 200){
       stop(paste(data$errors$code, "-", data$errors$message, "-", campaignId))
-    }
-    if (nrowCampaigns > 1){
-      setTxtProgressBar(pb, i)
     }
     if(is.null(data$mainStats$clicks)) next
     result <- rbind(result, data.frame(date = as.Date(data$mainStats$date),
