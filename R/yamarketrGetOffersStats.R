@@ -1,5 +1,5 @@
 # Получаем расходы по предложениям
-yamarketrGetOffersCost <- function (Campaigns, 
+yamarketrGetOffersStats <- function (Campaigns, 
                                     fromDate = format(Sys.Date() - 8, "%d-%m-%Y"), 
                                     toDate = format(Sys.Date() - 1, "%d-%m-%Y"), 
                                     Login = NULL, 
