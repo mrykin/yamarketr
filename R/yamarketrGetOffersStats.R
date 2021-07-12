@@ -10,7 +10,7 @@ yamarketrGetOffersStats <- function (Campaigns,
 {
   result <- data.frame(clicks = numeric(0), spending = numeric(0), 
                        offerName = character(0), feedId = character(0), 
-                       offerId = character(0), url = character(0))
+                       offerId = character(0), url = character(0), campId = character(0))
   nrowCampaigns <- ifelse((is.vector(Campaigns) | is.numeric(Campaigns) | 
                              is.character(Campaigns)), length(Campaigns), nrow(Campaigns))
   if (nrowCampaigns > 1) {
@@ -40,7 +40,7 @@ yamarketrGetOffersStats <- function (Campaigns,
                  "-", campaignId))
     }
     
-    result <- rbind(result, data$offersStats$offerStats)
+    result <- rbind(result, data.frame(data$offersStats$offerStats, campId = campaignId))
     
     page <- 2L
     totalOffers <- ceiling(data$offersStats$totalOffersCount/100)
@@ -57,7 +57,7 @@ yamarketrGetOffersStats <- function (Campaigns,
                          times = 5, pause_min = 20, terminate_on_success = FALSE)
       data <- jsonlite::fromJSON(httr::content(raw, type = "text", 
                                                encoding = "UTF-8"))
-      result <- rbind(result, data$offersStats$offerStats)
+      result <- rbind(result, data.frame(data$offersStats$offerStats, campId = campaignId))
       page <- page+1
     }
     
